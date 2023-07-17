@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PhoneMarket.Data;
+using PhoneMarket.Repository.IRepo;
+using PhoneMarket.Repository.SqlRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //db connection
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+//DI
+builder.Services.AddScoped<IPermissionRepo,SqlPermissionRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
