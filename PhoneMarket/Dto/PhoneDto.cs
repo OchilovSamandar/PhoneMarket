@@ -1,8 +1,7 @@
-﻿namespace PhoneMarket.Model
+﻿namespace PhoneMarket.Dto
 {
-    public class Phone
+    public class PhoneDto
     {
-        public int Id { get; set; }
         public string? Name { get; set; }
         public string? Model { get; set; }
         public string? Description { get; set; }

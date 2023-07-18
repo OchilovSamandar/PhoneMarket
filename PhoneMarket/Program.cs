@@ -18,6 +18,12 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(build
 //DI
 builder.Services.AddScoped<IPermissionRepo,SqlPermissionRepo>();
 builder.Services.AddScoped<IPermissionService,PermissionService>();
+//role di
+builder.Services.AddScoped<IRoleService,RoleService>();
+builder.Services.AddScoped<IRoleRepo,SqlRoleRepo>();
+//phone di
+builder.Services.AddScoped<IPhoneRepo,SqlPhoneRepo>();
+builder.Services.AddScoped<IPhoneService,PhoneService>();
 
 var app = builder.Build();
 

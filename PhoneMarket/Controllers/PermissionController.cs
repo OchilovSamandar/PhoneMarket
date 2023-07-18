@@ -28,5 +28,46 @@ namespace PhoneMarket.Controllers
 
             return Ok(apiResponse);
         }
+
+        [HttpGet("/get/{id}")]
+        public IActionResult GetPermission(int id)
+        {
+            ApiResponse apiResponse = _permissionService.GetPermissonById(id);
+            if(apiResponse.Success==false)
+            {
+                return BadRequest(apiResponse.Message);
+            }
+            return Ok(apiResponse);
+        }
+
+        [HttpGet("{name}")]
+        public IActionResult GetByName(string name)
+        {
+            ApiResponse apiResponse = _permissionService.GetPermissionByName(name);
+            if(apiResponse.Success==false)
+                return BadRequest(apiResponse.Message);
+
+            return Ok(apiResponse);
+        }
+
+        [HttpDelete]
+        public IActionResult DeletePermission(int id)
+        {
+            ApiResponse apiResponse = _permissionService.DeletePermission(id);
+            if(apiResponse.Success == false)
+            {
+                return NotFound();
+            }
+            return Ok(apiResponse);
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var model = _permissionService.GetAllPermission();
+            return Ok(model);
+           
+        }
+
     }
 }

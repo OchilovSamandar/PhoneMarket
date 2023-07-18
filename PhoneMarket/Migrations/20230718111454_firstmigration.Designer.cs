@@ -12,7 +12,7 @@ using PhoneMarket.Data;
 namespace PhoneMarket.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230717053243_firstmigration")]
+    [Migration("20230718111454_firstmigration")]
     partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,15 +59,12 @@ namespace PhoneMarket.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Model")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")

@@ -14,7 +14,7 @@ namespace PhoneMarket.Service.LogicServices
             _permissionRepo = permissionRepo;
         }
 
-        public  ApiResponse AddPermission(PermissionDto permissionDto)
+        public ApiResponse AddPermission(PermissionDto permissionDto)
         {
             if (permissionDto != null)
             {
@@ -30,30 +30,49 @@ namespace PhoneMarket.Service.LogicServices
         }
 
        
-        public ApiResponse DeletePermission(Permission permission)
+        public ApiResponse DeletePermission(int id)
         {
-           if(permission != null)
+           if(id != null)
             {
-                _permissionRepo.DeletePermission(permission);
-                return new ApiResponse("O'chirildi", true);
+                bool v = _permissionRepo.DeletePermission(id);
+
+                if (v=true)
+                {
+                    return new ApiResponse("O'chirildi", true);
+                }
+                return new ApiResponse("Bunday permission mavjud emas", false);
+
             }
             return new ApiResponse("O'chirilmadi", false);
         }
 
 
-        public ApiResponse GetAllPermission()
+        public List<Permission> GetAllPermission()
         {
-            throw new NotImplementedException();
+            List<Permission> permissions = _permissionRepo.GetAllPermissions();
+            return permissions;
+
         }
 
         public ApiResponse GetPermissionByName(string permissionName)
         {
-            throw new NotImplementedException();
+            if(permissionName != null)
+            {
+                IQueryable queryable = _permissionRepo.GetPermissionByName(permissionName);
+                return new ApiResponse("topildi", true,queryable);
+            }
+            return new ApiResponse("topilmadi", false);
         }
 
         public ApiResponse GetPermissonById(int id)
         {
-            throw new NotImplementedException();
+           if(id != null)
+            {
+                IQueryable queryable = _permissionRepo.GetPermissionById(id);
+                
+                return new ApiResponse("ok", true, queryable);
+            }
+            return new ApiResponse("id null keldi", false);
         }
 
         public ApiResponse UpdatePermission(Permission permission)

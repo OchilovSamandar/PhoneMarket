@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PhoneMarket.Data;
+using PhoneMarket.Exceptions;
 using PhoneMarket.Model;
 using PhoneMarket.Repository.IRepo;
 
@@ -26,40 +27,42 @@ namespace PhoneMarket.Repository.SqlRepo
              await Task.CompletedTask;
         }
 
-        public  Task DeletePermission(Permission permission)
+        public bool DeletePermission(int id)
         {
+            Permission? permission = _context.Permissions.Find(id);
+            
+            bool b = false;
             try
             {
                  _context.Permissions.Remove(permission);
-                _context.SaveChangesAsync();
+                  _context.SaveChangesAsync();
+                b = true;
             }catch(Exception ex)
             {
-                return Task.FromException(ex);
+                 b= false ;
             }
-            return Task.CompletedTask;
+            return b;
         }
 
-        public async Task<IEnumerable<Permission>> GetAllPermissions()
+        public  List<Permission> GetAllPermissions()
         {
-            try
-            {
-              return await _context.Permissions.ToListAsync(); 
-            }catch(Exception ex)
-            {
-                return new List<Permission>();
-            }
+            List<Permission> permissions = _context.Permissions.ToList();
+            return permissions;
 
         }
 
-        public async Task<Permission> GetPermissionById(int id)
+        public  IQueryable GetPermissionById(int id)
         {
-                return await _context.Permissions.
-                       FirstOrDefaultAsync(permission => permission.Id == id);         
+
+            return  _context.Permissions.Where(x => x.Id == id);
+               
         }
 
-        public async Task<Permission> GetPermissionByName(string name)
+        public IQueryable GetPermissionByName(string name)
         {
-            return await _context.Permissions.FirstOrDefaultAsync(permission => permission.Name == name);
+            IQueryable<Permission> permissions = _context.Permissions.Where(permission => permission.Name == name);
+            
+            return permissions;
         }
 
         public Task UpdatePermission(Permission permission)

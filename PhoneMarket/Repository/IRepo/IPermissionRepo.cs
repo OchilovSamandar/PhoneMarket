@@ -5,10 +5,10 @@ namespace PhoneMarket.Repository.IRepo
     public interface IPermissionRepo
     {
         Task CreatePermission(Permission permission);
-        Task DeletePermission(Permission permission);
+        bool  DeletePermission(int id);
         Task UpdatePermission(Permission permission);
-        Task<Permission> GetPermissionById(int id);
-        Task<Permission> GetPermissionByName(string name);
-        Task<IEnumerable<Permission>> GetAllPermissions();
+        IQueryable GetPermissionById(int id);
+        IQueryable GetPermissionByName(string name);
+        List<Permission> GetAllPermissions();
     }
 }
