@@ -38,6 +38,24 @@ namespace PhoneMarket.Service.LogicServices
             return new ApiResponse("Phone null keldi", false);   
         }
 
+        public ApiResponse DeletePhone(int id)
+        {
+            if (id != 0)
+            {
+                bool v = _phoneRepo.DeletePhone(id);
+                if (v == true)
+                {
+                    return new ApiResponse("O'chirildi", true);
+                }
+                else
+                {
+                    return new ApiResponse("Bunday phone topilmadi",false);
+                }
+            }
+            return new ApiResponse("id null keldi",false );
+
+        }
+
         public ApiResponse GetAllPhones()
         {
             List<Phone> phones = _phoneRepo.GetAllPhones();

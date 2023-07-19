@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using PhoneMarket.Data;
 using PhoneMarket.Repository.IRepo;
 using PhoneMarket.Repository.SqlRepo;
@@ -24,6 +26,19 @@ builder.Services.AddScoped<IRoleRepo,SqlRoleRepo>();
 //phone di
 builder.Services.AddScoped<IPhoneRepo,SqlPhoneRepo>();
 builder.Services.AddScoped<IPhoneService,PhoneService>();
+//auth
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+
+
+        };
+    });
 
 var app = builder.Build();
 

@@ -39,5 +39,16 @@ namespace PhoneMarket.Controllers
             ApiResponse apiResponse = _phoneService.GetById(id);
             return Ok(apiResponse);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletePhone(int id)
+        {
+            ApiResponse apiResponse = _phoneService.DeletePhone(id);
+            if (apiResponse.Success == false)
+            {
+                return BadRequest(apiResponse.Message);
+            }
+            return Ok(apiResponse);
+        }
     }
 }

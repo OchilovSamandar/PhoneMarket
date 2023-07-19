@@ -7,6 +7,7 @@ namespace PhoneMarket.Repository.IRepo
         bool AddPhone(Phone phone);
         List<Phone> GetAllPhones();
         IQueryable GetPhoneById(int id);
+        bool DeletePhone(int id);
 
     }
 }

@@ -55,5 +55,6 @@ namespace PhoneMarket.Controllers
             ApiResponse apiResponse = _roleService.GetAllRole();
             return Ok(apiResponse);
         }
+       
     }
 }

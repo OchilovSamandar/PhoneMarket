@@ -7,5 +7,6 @@ namespace PhoneMarket.Service.IServices
         ApiResponse AddPhone(PhoneDto phoneDto);
         ApiResponse GetAllPhones();
         ApiResponse GetById(int id);
+        ApiResponse DeletePhone(int id);
     }
 }

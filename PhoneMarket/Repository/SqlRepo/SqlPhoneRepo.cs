@@ -28,6 +28,22 @@ namespace PhoneMarket.Repository.SqlRepo
             return result;
         }
 
+        public bool DeletePhone(int id)
+        {
+            bool result = false;
+            try
+            {
+                IQueryable<Phone> phones = _context.Phones.Where(p => p.Id == id);
+                _context.Phones.Remove((Phone)phones);
+                _context.SaveChanges();
+                result = true;
+            }catch(Exception ex)
+            {
+                result= false;
+            }
+            return result;
+        }
+
         public List<Phone> GetAllPhones()
         {
             List<Phone> phones = _context.Phones.ToList();

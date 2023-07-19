@@ -7,7 +7,7 @@ namespace PhoneMarket.Repository.IRepo
         bool AddRole(Role Role);
         
         Role GetRoleByName(string RoleName);
-        bool GetRoleById(int id);
+        IQueryable GetRoleById(int id);
 
         bool DeleteRole(int id);
 

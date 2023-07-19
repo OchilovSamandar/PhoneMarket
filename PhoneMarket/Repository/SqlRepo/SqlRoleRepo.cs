@@ -50,17 +50,11 @@ namespace PhoneMarket.Repository.SqlRepo
             return roles;
         }
 
-        public bool GetRoleById(int id)
+        public IQueryable GetRoleById(int id)
         {
-            bool result = false;
-            try
-            {////////////////////////////////////////////////getRoleId methodi yozilyotgandi
-             ////////////////////////////////////////////////va role service methodlarida ham togirlash kerak
-                 _context.Roles.Where(x => x.Id == id);
-                result = true;
-            }catch(Exception e) { result=false; }
-
-            return result;
+                IQueryable<Role> roles = _context.Roles.Where(x => x.Id == id);
+            return roles;
+               
 
         }
 

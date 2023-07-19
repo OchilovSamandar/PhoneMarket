@@ -69,7 +69,16 @@ namespace PhoneMarket.Service.LogicServices
             if(id != 0)
             {
                 IQueryable role = _roleRepo.GetRoleById(id);
-                return new ApiResponse("id",true,role);
+                Console.WriteLine(role.ToString());
+                if (role.Equals(null))
+                {
+
+                    return new ApiResponse("Bunday role mavjud emas", false);
+                }
+                else
+                {
+                    return new ApiResponse("id", true, role);
+                }
             }
             return new ApiResponse("id null keldi",false);
         }
