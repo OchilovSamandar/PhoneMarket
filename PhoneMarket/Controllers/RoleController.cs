@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PhoneMarket.Dto;
 using PhoneMarket.Service.IServices;
 
@@ -20,10 +19,11 @@ namespace PhoneMarket.Controllers
         public IActionResult AddRole(RoleDto roleDto)
         {
             ApiResponse apiResponse = _roleService.AddRole(roleDto);
-            if (apiResponse.Success==false) 
+            if (apiResponse.Success == false)
             {
                 return BadRequest(apiResponse.Message);
             }
+
             return Ok(apiResponse);
         }
 
@@ -31,7 +31,7 @@ namespace PhoneMarket.Controllers
         public IActionResult GetByID(int id)
         {
             ApiResponse apiResponse = _roleService.GetRoleById(id);
-            if (apiResponse.Success==false)
+            if (apiResponse.Success == false)
             {
                 return BadRequest(apiResponse.Message);
             }
@@ -42,10 +42,11 @@ namespace PhoneMarket.Controllers
         public IActionResult DeleteRole(int id)
         {
             ApiResponse apiResponse = _roleService.DeleteRole(id);
-            if (apiResponse.Success==false)
+            if (apiResponse.Success == false)
             {
                 return BadRequest(apiResponse.Message);
             }
+
             return Ok(apiResponse);
         }
 
@@ -53,8 +54,9 @@ namespace PhoneMarket.Controllers
         public IActionResult GetAllRoles()
         {
             ApiResponse apiResponse = _roleService.GetAllRole();
+
             return Ok(apiResponse);
         }
-       
+
     }
 }

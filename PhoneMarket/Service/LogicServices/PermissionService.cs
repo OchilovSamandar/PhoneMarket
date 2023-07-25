@@ -25,18 +25,17 @@ namespace PhoneMarket.Service.LogicServices
                 _permissionRepo.CreatePermission(permission);
                 return new ApiResponse("Saqlandi", true);
             }
-            return new ApiResponse("permission nul keldi", false);            
-           
+            return new ApiResponse("permission nul keldi", false);
         }
 
-       
+
         public ApiResponse DeletePermission(int id)
         {
-           if(id != null)
+            if (id != null)
             {
                 bool v = _permissionRepo.DeletePermission(id);
 
-                if (v=true)
+                if (v = true)
                 {
                     return new ApiResponse("O'chirildi", true);
                 }
@@ -56,20 +55,20 @@ namespace PhoneMarket.Service.LogicServices
 
         public ApiResponse GetPermissionByName(string permissionName)
         {
-            if(permissionName != null)
+            if (permissionName != null)
             {
                 IQueryable queryable = _permissionRepo.GetPermissionByName(permissionName);
-                return new ApiResponse("topildi", true,queryable);
+                return new ApiResponse("topildi", true, queryable);
             }
             return new ApiResponse("topilmadi", false);
         }
 
         public ApiResponse GetPermissonById(int id)
         {
-           if(id != null)
+            if (id != null)
             {
                 IQueryable queryable = _permissionRepo.GetPermissionById(id);
-                
+
                 return new ApiResponse("ok", true, queryable);
             }
             return new ApiResponse("id null keldi", false);

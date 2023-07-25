@@ -15,15 +15,16 @@ namespace PhoneMarket.Repository.SqlRepo
 
         public bool AddPhone(Phone phone)
         {
-           bool result = false;
+            bool result = false;
             try
             {
                 _context.Phones.Add(phone);
                 _context.SaveChanges();
                 result = true;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                result= false;
+                result = false;
             }
             return result;
         }
@@ -37,9 +38,10 @@ namespace PhoneMarket.Repository.SqlRepo
                 _context.Phones.Remove((Phone)phones);
                 _context.SaveChanges();
                 result = true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                result= false;
+                result = false;
             }
             return result;
         }

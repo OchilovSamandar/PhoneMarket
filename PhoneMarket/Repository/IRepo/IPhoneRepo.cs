@@ -8,6 +8,5 @@ namespace PhoneMarket.Repository.IRepo
         List<Phone> GetAllPhones();
         IQueryable GetPhoneById(int id);
         bool DeletePhone(int id);
-
     }
 }

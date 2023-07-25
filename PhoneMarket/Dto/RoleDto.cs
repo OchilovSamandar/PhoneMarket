@@ -1,7 +1,4 @@
-﻿using PhoneMarket.Dto.enums;
-using PhoneMarket.Model;
-
-namespace PhoneMarket.Dto
+﻿namespace PhoneMarket.Dto
 {
     public class RoleDto
     {

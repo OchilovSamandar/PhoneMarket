@@ -13,7 +13,7 @@ namespace PhoneMarket.Repository.SqlRepo
             _context = context;
         }
 
-        public  bool AddRole(Role role)
+        public bool AddRole(Role role)
         {
             bool result = false;
             try
@@ -21,9 +21,10 @@ namespace PhoneMarket.Repository.SqlRepo
                 _context.Roles.Add(role);
                 _context.SaveChanges();
                 result = true;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-              result=false;
+                result = false;
             }
             return result;
         }
@@ -37,9 +38,10 @@ namespace PhoneMarket.Repository.SqlRepo
                 _context.Roles.Remove((Role)roles);
                 _context.SaveChanges();
                 result = true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                result=false;
+                result = false;
             }
             return result;
         }
@@ -52,10 +54,8 @@ namespace PhoneMarket.Repository.SqlRepo
 
         public IQueryable GetRoleById(int id)
         {
-                IQueryable<Role> roles = _context.Roles.Where(x => x.Id == id);
+            IQueryable<Role> roles = _context.Roles.Where(x => x.Id == id);
             return roles;
-               
-
         }
 
         public Role GetRoleByName(string RoleName)

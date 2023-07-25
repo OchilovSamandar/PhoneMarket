@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PhoneMarket.Dto;
 using PhoneMarket.Service.IServices;
 
@@ -20,7 +19,7 @@ namespace PhoneMarket.Controllers
         public IActionResult PhoneSave(PhoneDto phoneDto)
         {
             ApiResponse apiResponse = _phoneService.AddPhone(phoneDto);
-            if(apiResponse.Success==false)
+            if (apiResponse.Success == false)
             {
                 return BadRequest(apiResponse.Message);
             }

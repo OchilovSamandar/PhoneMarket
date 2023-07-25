@@ -1,5 +1,4 @@
 ﻿using PhoneMarket.Dto;
-using PhoneMarket.Model;
 
 namespace PhoneMarket.Service.IServices
 {

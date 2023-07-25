@@ -16,7 +16,7 @@ namespace PhoneMarket.Service.LogicServices
 
         public ApiResponse AddPhone(PhoneDto phoneDto)
         {
-           if (phoneDto != null) 
+            if (phoneDto != null)
             {
                 Phone phone = new Phone();
                 phone.Name = phoneDto.Name;
@@ -26,7 +26,7 @@ namespace PhoneMarket.Service.LogicServices
                 phone.isNew = phoneDto.isNew;
 
                 bool v = _phoneRepo.AddPhone(phone);
-                if(v==true)
+                if (v == true)
                 {
                     return new ApiResponse("Saqlandi", true);
                 }
@@ -35,7 +35,7 @@ namespace PhoneMarket.Service.LogicServices
                     return new ApiResponse("Saqlanmadi", false);
                 }
             }
-            return new ApiResponse("Phone null keldi", false);   
+            return new ApiResponse("Phone null keldi", false);
         }
 
         public ApiResponse DeletePhone(int id)
@@ -49,23 +49,22 @@ namespace PhoneMarket.Service.LogicServices
                 }
                 else
                 {
-                    return new ApiResponse("Bunday phone topilmadi",false);
+                    return new ApiResponse("Bunday phone topilmadi", false);
                 }
             }
-            return new ApiResponse("id null keldi",false );
-
+            return new ApiResponse("id null keldi", false);
         }
 
         public ApiResponse GetAllPhones()
         {
             List<Phone> phones = _phoneRepo.GetAllPhones();
-            return new ApiResponse("All phones",true, phones);
+            return new ApiResponse("All phones", true, phones);
         }
 
         public ApiResponse GetById(int id)
         {
             IQueryable queryable = _phoneRepo.GetPhoneById(id);
-            return new ApiResponse("Phone",true, queryable);
+            return new ApiResponse("Phone", true, queryable);
         }
     }
 }
