@@ -5,7 +5,7 @@ using PhoneMarket.Service.IServices;
 
 namespace PhoneMarket.Service.LogicServices
 {
-    public class PermissionService : IPermissionService
+    public partial class PermissionService : IPermissionService
     {
         private readonly IPermissionRepo _permissionRepo;
 
